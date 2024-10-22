@@ -1,0 +1,114 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #e6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    flex-direction: column;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: #4ab9b9;
+    margin-bottom: 20px;
+}
+
+.round-button {
+    width: 180px;
+    height: 100px;
+    background: linear-gradient(135deg, #4bcfcf, #72dfdf);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 250px;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background-color: #f0f4f7;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+}
+
+.input-field:focus {
+    background-color: #e1f7f7;
+    outline: none;
+}
+
+.login-btn {
+    width: 250px;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #4bcfcf, #72dfdf);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.login-btn:hover {
+    background-color: #4ab9b9;
+}
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.moving-icon {
+    font-size: 50px;
+    margin: 0 20px;
+    color: #42a5f5;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Keyframes for bounce effect */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+
