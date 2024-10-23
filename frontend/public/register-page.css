@@ -9,9 +9,36 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #e6f5f7;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px; /* Adjust this margin to control the space above the Health Tracker container */
+}
+
+.moving-icon {
+    font-size: 50px;
+    margin: 0 20px;
+    color: #4ab9b9;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+/* Keyframes for bounce effect */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
 }
 
 .container {
@@ -84,37 +111,4 @@ body {
 
 .login-btn:hover {
     background-color: #4ab9b9;
-}
-
-.icon-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.moving-icon {
-    font-size: 50px;
-    margin: 0 20px;
-    color: #42a5f5;
-    animation: bounce 2s infinite ease-in-out;
-}
-
-/* Keyframes for bounce effect */
-@keyframes bounce {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-30px);
-    }
-
-    60% {
-        transform: translateY(-15px);
-    }
 }
