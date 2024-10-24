@@ -1,0 +1,56 @@
+/* src/Pages/CaloriesPage.css */
+
+.calories-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: #4ab9b9;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-container label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+}
+
+.log-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #4bcfcf, #72dfdf);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.log-btn:hover {
+    background-color: #4ab9b9;
+}
+
