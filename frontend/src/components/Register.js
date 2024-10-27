@@ -1,24 +1,24 @@
 // src/components/Register.js
 
-import React, { useState } from 'react';
-import axios from 'axios';
-import './register-page.css'; // Assuming you moved register-page.css into src
+import React, { useState } from "react";
+import axios from "axios";
+import "./register-page.css"; // Assuming you moved register-page.css into src
 
 const Register = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/users', { firstName, lastName, email, password });
-      setMessage('Registration successful! You can now log in.');
+      await axios.post("/api/users", { firstName, lastName, email, password });
+      setMessage("Registration successful! You can now log in.");
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      setError("Registration failed. Please try again.");
     }
   };
 
@@ -75,7 +75,9 @@ const Register = () => {
               required
             />
           </div>
-          <button className="login-btn" type="submit">Register</button>
+          <button className="login-btn" type="submit">
+            Register
+          </button>
         </form>
         {message && <p className="success">{message}</p>}
         {error && <p className="error">{error}</p>}

@@ -1,9 +1,49 @@
-/* Adjust form section for registration and login */
+/* General Container Styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e6f7f9;
+    /* Light background to make the form stand out */
+}
+
+/* Icon Container for Moving Icons */
+.icon-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.moving-icon {
+    color: #4bcfcf;
+    font-size: 2rem;
+    animation: move 2s infinite alternate;
+}
+
+/* Form Box Styling */
+.login-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* Subtitle Styling */
 .subtitle {
     font-size: 1.5rem;
     color: #000;
     margin-bottom: 15px;
     text-align: center;
+}
+
+/* Form Input Field Styling */
+.input-container {
+    margin: 15px 0;
 }
 
 .input-field {
@@ -15,6 +55,12 @@
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+.input-field:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Button Styling */
 .login-btn {
     width: 100%;
     padding: 15px;
@@ -29,4 +75,21 @@
 
 .login-btn:hover {
     background-color: #4ab9b9;
+}
+
+/* Error Message Styling */
+.error {
+    color: #dc3545;
+    font-size: 0.9rem;
+}
+
+/* Animation for Moving Icons */
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
 }
