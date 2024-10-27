@@ -1,28 +1,19 @@
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
-import 'frontend/src/App.js';
+import Register from './components/Register';
+import './index.css';
+
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        {/* Add other routes as needed */}
-      </Routes>
+      <Switch>
+        <Route path="/" exact component={Login} />
+        <Route path="/register" component={Register} />
+      </Switch>
     </Router>
   );
 }
 
 export default App;
-//import React from 'react';
-//import './App.css';
-//import Login from './components/Login'; // Import Login component
-
-//function App() {
-//  return (
-  //  <div className="App">
-    //  <Login /> {/* Render Login component */}
-   // </div>
- // );
-//}
-

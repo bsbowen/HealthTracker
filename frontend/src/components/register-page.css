@@ -1,0 +1,92 @@
+
+/* register-page.css */
+
+/* General Container Styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Icon Container for Moving Icons */
+  .icon-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .moving-icon {
+    font-size: 2rem;
+    animation: move 2s infinite alternate;
+  }
+  
+  /* Login Box Styling */
+  .login-box {
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  /* Form Input Field Styling */
+  .input-container {
+    margin: 15px 0;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  /* Button Styling */
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error Message Styling */
+  .error {
+    color: #dc3545;
+    font-size: 0.9rem;
+  }
+  
+  /* Success Message Styling */
+  .success {
+    color: #28a745;
+    font-size: 0.9rem;
+  }
+  
+  /* Animation for Moving Icons */
+  @keyframes move {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+  
