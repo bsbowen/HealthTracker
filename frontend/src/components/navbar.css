@@ -15,23 +15,30 @@
 
 .navbar-container {
   display: flex;
-  gap: 20px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 50px;
+  margin-left: 5px;
 }
 
 .nav-link {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  background: #72dfdf;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .nav-link:hover {
-  color: #e6f7f9;
+  background: #4bcfcf;
+  color: #ffffff;
 }
 
 .logout-btn {
@@ -44,6 +51,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-left: auto;
+  margin-right: 20px;
 }
 
 .logout-btn:hover {

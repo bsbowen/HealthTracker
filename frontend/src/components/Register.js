@@ -1,7 +1,9 @@
 // src/components/Register.js
 
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Navbar from "./Navbar";
 import "./register-page.css"; // Assuming you moved register-page.css into src
 
 const Register = () => {
@@ -11,6 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -24,6 +27,7 @@ const Register = () => {
 
   return (
     <div className="container">
+      <Navbar />
       {/* Moving Icons Section */}
       <div className="icon-container">
         <i className="fas fa-heartbeat moving-icon"></i>
@@ -79,7 +83,17 @@ const Register = () => {
             Register
           </button>
         </form>
-        {message && <p className="success">{message}</p>}
+        {message && (
+          <div>
+            <p className="success">{message}</p>
+            <button
+              className="login-btn"
+              onClick={() => navigate("/api/auth/login")}
+            >
+              Go to Login
+            </button>
+          </div>
+        )}
         {error && <p className="error">{error}</p>}
       </div>
     </div>

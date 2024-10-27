@@ -18,6 +18,7 @@ const calorieEntryRoutes = require("./routes/calorieEntries");
 const exerciseLogRoutes = require("./routes/exerciseLogs");
 const sleepRecordRoutes = require("./routes/sleepRecords");
 
+
 // Use the routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
