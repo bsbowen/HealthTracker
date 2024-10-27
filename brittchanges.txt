@@ -1,0 +1,14 @@
+changes made since last push to britt branch:
+
+package.json:see lines 15-18
+added scripts to start front end and back in at the same time 
+
+package-lock.json: see lines 52-75
+node moduels added:
+- ansi-regex
+- ansi-styles
+- engines node: ">=8"
+- funding : url
+
+frontend:
+
