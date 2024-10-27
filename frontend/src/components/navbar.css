@@ -1,0 +1,68 @@
+/* General Navbar Styling */
+.navbar {
+  background-color: #4bcfcf;
+  padding: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #e6f7f9;
+}
+
+.logout-btn {
+  background-color: #ff6b6b;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: auto;
+}
+
+.logout-btn:hover {
+  background-color: #e65c5c;
+}
+
+/* Favicon Styling */
+.moving-icon {
+  color: #ffffff;
+  font-size: 1.5rem;
+  animation: move 2s infinite alternate;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-5px);
+  }
+}
