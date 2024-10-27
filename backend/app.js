@@ -1,12 +1,15 @@
 const express = require("express");
 const connectDB = require("./config/db"); // Import the DB connection logic
 require("dotenv").config(); // Load environment variables
+const morgan = require("morgan");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5001;
+
 
 // Middleware for parsing JSON
 app.use(express.json());
+app.use(morgan('dev'));
 
 // Import routes
 const authRoutes = require("./routes/auth");
