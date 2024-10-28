@@ -1,16 +1,16 @@
-// src/components/Dashboard.js
+// src/pages/Dashboard/DashboardPage.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./DashboardPage.css"; // Link to the CSS file
+import "./DashboardPage.css";
 import Navbar from "../../components/Navbar/Navbar";
-
-
+import CaloriesWidget from "../../components/Widgets/CaloriesWidget";
+import ExerciseWidget from "../../components/Widgets/ExerciseWidget";
+import SleepWidget from "../../components/Widgets/SleepWidget";
 
 const DashboardPage = () => {
-  const [totalCalories, setTotalCalories] = useState(0);
-  const [exerciseDuration, setExerciseDuration] = useState(0);
-  const [sleepDuration, setSleepDuration] = useState(0);
-  const [date, setDate] = useState("");
+  const [calorieData, setCalorieData] = useState([]);
+  const [exerciseData, setExerciseData] = useState([]);
+  const [sleepData, setSleepData] = useState([]);
 
   useEffect(() => {
     // Fetch calorie entries
@@ -21,14 +21,7 @@ const DashboardPage = () => {
         },
       })
       .then((response) => {
-        const calorieData = response.data;
-        // Assuming the response is an array of entries, sum them up
-        const total = calorieData.reduce(
-          (acc, entry) => acc + entry.calories,
-          0
-        );
-        setTotalCalories(total);
-        if (calorieData.length > 0) setDate(calorieData[0].intake_date); // Example of getting the latest date
+        setCalorieData(response.data);
       })
       .catch((error) => console.error("Error fetching calorie data:", error));
 
@@ -40,13 +33,7 @@ const DashboardPage = () => {
         },
       })
       .then((response) => {
-        const exerciseData = response.data;
-        // Sum all exercise durations
-        const total = exerciseData.reduce(
-          (acc, entry) => acc + entry.duration,
-          0
-        );
-        setExerciseDuration(total);
+        setExerciseData(response.data);
       })
       .catch((error) => console.error("Error fetching exercise data:", error));
 
@@ -58,47 +45,20 @@ const DashboardPage = () => {
         },
       })
       .then((response) => {
-        const sleepData = response.data;
-        // Sum all sleep durations
-        const total = sleepData.reduce(
-          (acc, entry) => acc + entry.sleep_duration,
-          0
-        );
-        setSleepDuration(total);
+        setSleepData(response.data);
       })
       .catch((error) => console.error("Error fetching sleep data:", error));
   }, []);
 
   return (
     <div className="container">
-    <div className="dashboard-container">
+      <div className="dashboard-container">
         <Navbar />
-        {/* Total Calories */}
-        <div className="card">
-            <h3 className="card-title">Total Calories</h3>
-            <p className="card-content">
-                • {totalCalories} calories on {date}
-            </p>
-        </div>
-
-        {/* Total Exercise Duration */}
-        <div className="card">
-            <h3 className="card-title">Total Exercise Duration</h3>
-            <p className="card-content">
-                • {exerciseDuration} minutes on {date}
-            </p>
-        </div>
-
-        {/* Total Sleep Duration */}
-        <div className="card">
-            <h3 className="card-title">Total Sleep Duration</h3>
-            <p className="card-content">
-                • {sleepDuration} hours on {date}
-            </p>
-        </div>
+        <CaloriesWidget data={calorieData} />
+        <ExerciseWidget data={exerciseData} />
+        <SleepWidget data={sleepData} />
+      </div>
     </div>
-</div>
-
   );
 };
 
