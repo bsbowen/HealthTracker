@@ -1,6 +1,7 @@
 // src/Pages/ExercisePage.js
 import React, { useState } from 'react';
 import './ExercisePage.css'; // Import your CSS for the page
+import Navbar from "../../components/Navbar/Navbar";
 
 const ExercisePage = () => {
     const [date, setDate] = useState('');
@@ -13,6 +14,7 @@ const ExercisePage = () => {
 
     return (
         <div className="tracker-container">
+        <Navbar />
             <h2 className="title">Log Exercise</h2>
             <form onSubmit={handleAddExercise} className="tracker-form">
                 <div className="input-container">

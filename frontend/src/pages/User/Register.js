@@ -86,7 +86,7 @@ const Register = () => {
             <p className="success">{message}</p>
             <button
               className="login-btn"
-              onClick={() => navigate("/api/auth/login")}
+              onClick={() => navigate("/")}
             >
               Go to Login
             </button>

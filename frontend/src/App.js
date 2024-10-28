@@ -14,7 +14,6 @@ import SleepPage from "./pages/Sleep/SleepPage"; // Updated SleepPage import pat
 function App() {
   return (
     <Router>
-      <Navbar /> {/* Added Navbar to be displayed on all pages */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

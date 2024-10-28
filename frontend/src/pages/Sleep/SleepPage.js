@@ -1,6 +1,7 @@
 // src/Pages/SleepPage.js
 import React, { useState } from 'react';
-import './SleepPage.css'; // Import your CSS for the page
+import './SleepPage.css';// Import your CSS for the page
+import Navbar from "../../components/Navbar/Navbar";
 
 const SleepPage = () => {
     const [date, setDate] = useState('');
@@ -13,6 +14,7 @@ const SleepPage = () => {
 
     return (
         <div className="sleep-container">
+        <Navbar />
             <h2 className="title">Log Sleep</h2>
             <form onSubmit={handleAddSleep} className="sleep-form">
                 <div className="input-container">

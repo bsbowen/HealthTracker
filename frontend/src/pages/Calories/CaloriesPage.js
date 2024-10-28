@@ -1,6 +1,7 @@
 // src/pages/CaloriesPage.js
 import React, { useState } from 'react';
 import './CaloriesPage.css'; // Import your CSS for the page
+import Navbar from "../../components/Navbar/Navbar";
 
 const CaloriesPage = () => {
     const [date, setDate] = useState('');
@@ -13,6 +14,7 @@ const CaloriesPage = () => {
 
     return (
         <div className="calories-container">
+        <Navbar />
             <h2 className="title">Log Calories</h2>
             <form onSubmit={handleAddCalories} className="calories-form">
                 <div className="input-container">
