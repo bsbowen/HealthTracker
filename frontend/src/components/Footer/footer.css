@@ -1,0 +1,25 @@
+/* src/components/footer.css */
+.footer {
+    background-color: #e6f7f9;
+    text-spacing-trim: 120px;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #4ab9b9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 -3px 6px rgba(58, 58, 58, 0.048);
+}
+
+.footer a {
+    color: #4ab9b9;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #333;
+}

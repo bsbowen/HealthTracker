@@ -3,13 +3,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./index.css";
-import Navbar from "./components/Navbar/Navbar"; // Added Navbar import
+//import Navbar from "./components/Navbar/Navbar"; // Added Navbar import
 import Login from "./pages/User/Login";
 import Register from "./pages/User/Register";
 import Dashboard from "./pages/Dashboard/DashboardPage";
 import CaloriesPage from "./pages/Calories/CaloriesPage"; // Updated CaloriesPage import path
 import ExercisePage from "./pages/Exercise/ExercisePage"; // Updated ExercisePage import path
 import SleepPage from "./pages/Sleep/SleepPage"; // Updated SleepPage import path
+import Footer from "./components/Footer/footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/exercise-log" element={<ExercisePage />} /> {/* Added ExercisePage route */}
         <Route path="/sleep-log" element={<SleepPage />} /> {/* Added SleepPage route */}
       </Routes>
+      <Footer />
     </Router>
   );
 }

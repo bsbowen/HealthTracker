@@ -14,13 +14,14 @@
 .icon-container {
     display: flex;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;;
 }
 
 .moving-icon {
-    color: #4bcfcf;
+    color: #4bcfcf !important;
     font-size: 2rem;
     animation: move 2s infinite alternate;
+    scale: 1.5
 }
 
 /* Form Box Styling */

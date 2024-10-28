@@ -1,7 +1,7 @@
 /* General Navbar Styling */
 .navbar {
   background-color: #4bcfcf;
-  padding: 15px;
+  padding: 10px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
@@ -19,9 +19,9 @@
   width: 100%;
 }
 
-.nav-links {
+.nav-link {
   display: flex;
-  gap: 50px;
+  gap: 100px;
   margin-left: 5px;
 }
 
@@ -51,7 +51,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 25px;
 }
 
 .logout-btn:hover {
