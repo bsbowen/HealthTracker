@@ -12,14 +12,18 @@ router.post('/register', async (req, res) => {
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ error: 'User already exists' });
 
-    const user = new User({ firstName, lastName, email, password });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const user = new User({ firstName, lastName, email, password: hashedPassword });
     await user.save();
     res.status(201).json({ message: 'User created successfully' });
   } catch (err) {
-    console.error('Error during registration', err); //log the error
+    console.error('Error during registration', err); // Log the error
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 // Login user
 router.post('/login', async (req, res) => {
@@ -31,12 +35,17 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ error: 'Invalid credentials' });
 
+    console.log('User authenticated, generating token...');
+
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    console.log('Generated Token:', token); // Log the token for debugging
+
     res.json({ token });
   } catch (err) {
-    console.error('Error during login', err); //log the error
+    console.error('Error during login', err); // Log the error
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 module.exports = router;

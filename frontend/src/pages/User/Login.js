@@ -34,7 +34,7 @@ const Login = () => {
       const response = await axios.post("/api/auth/login", { email, password });
       localStorage.setItem("token", response.data.token);
       console.log("Logged in successfully");
-      navigate("./Dashboard"); // Redirect to dashboard or home page
+      navigate("./dashboard"); // Redirect to dashboard or home page
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         setError(err.response.data.message);

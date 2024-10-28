@@ -10,12 +10,9 @@
   "devDependencies": {
     "nodemon": "^3.1.7"
   },
-
-
-"scripts": {
-  "start": "concurrently \"npm run server\" \"npm run client\"",
-  "server": "cd backend && npm start", 
-  "client": "cd frontend && npm start"  
-
-}
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start"
+  }
 }
