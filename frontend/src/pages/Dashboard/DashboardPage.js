@@ -1,8 +1,10 @@
 // src/components/Dashboard.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./dashboard.css"; // Link to the CSS file
-import Navbar from "./Navbar";
+import "./DashboardPage.css"; // Link to the CSS file
+import Navbar from "../../components/Navbar/Navbar";
+
+
 
 const DashboardPage = () => {
   const [totalCalories, setTotalCalories] = useState(0);

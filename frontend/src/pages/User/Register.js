@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "./Navbar";
 import "./register-page.css"; // Assuming you moved register-page.css into src
 
 const Register = () => {
@@ -27,7 +26,6 @@ const Register = () => {
 
   return (
     <div className="container">
-      <Navbar />
       {/* Moving Icons Section */}
       <div className="icon-container">
         <i className="fas fa-heartbeat moving-icon"></i>
