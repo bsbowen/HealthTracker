@@ -1,4 +1,4 @@
-// src/pages/Dashboard/DashboardPage.js
+// src/Pages/DashboardPage.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./DashboardPage.css";
@@ -8,58 +8,46 @@ import ExerciseWidget from "../../components/Widgets/ExerciseWidget";
 import SleepWidget from "../../components/Widgets/SleepWidget";
 
 const DashboardPage = () => {
-  const [calorieData, setCalorieData] = useState([]);
-  const [exerciseData, setExerciseData] = useState([]);
-  const [sleepData, setSleepData] = useState([]);
+    const [calorieData, setCalorieData] = useState([]);
+    const [exerciseData, setExerciseData] = useState([]);
+    const [sleepData, setSleepData] = useState([]);
 
-  useEffect(() => {
-    // Fetch calorie entries
-    axios
-      .get("/api/calories/user/:userId", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        setCalorieData(response.data);
-      })
-      .catch((error) => console.error("Error fetching calorie data:", error));
+    useEffect(() => {
+        axios.get("/api/calories/user/:userId", {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }).then((response) => {
+            setCalorieData(response.data);
+        }).catch((error) => console.error("Error fetching calorie data:", error));
 
-    // Fetch exercise logs
-    axios
-      .get("/api/exercise/user/:userId", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        setExerciseData(response.data);
-      })
-      .catch((error) => console.error("Error fetching exercise data:", error));
+        axios.get("/api/exercise/user/:userId", {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }).then((response) => {
+            setExerciseData(response.data);
+        }).catch((error) => console.error("Error fetching exercise data:", error));
 
-    // Fetch sleep records
-    axios
-      .get("/api/sleep/user/:userId", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        setSleepData(response.data);
-      })
-      .catch((error) => console.error("Error fetching sleep data:", error));
-  }, []);
+        axios.get("/api/sleep/user/:userId", {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }).then((response) => {
+            setSleepData(response.data);
+        }).catch((error) => console.error("Error fetching sleep data:", error));
+    }, []);
 
-  return (
-    <div className="container">
-      <div className="dashboard-container">
-        <Navbar />
-        <CaloriesWidget data={calorieData} />
-        <ExerciseWidget data={exerciseData} />
-        <SleepWidget data={sleepData} />
-      </div>
-    </div>
-  );
+    return (
+        <div className="dashboard-page-container">
+            <Navbar />
+            <div className="dashboard-container">
+                <div className="card">
+                    <CaloriesWidget data={calorieData} />
+                </div>
+                <div className="card">
+                    <ExerciseWidget data={exerciseData} />
+                </div>
+                <div className="card">
+                    <SleepWidget data={sleepData} />
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default DashboardPage;
