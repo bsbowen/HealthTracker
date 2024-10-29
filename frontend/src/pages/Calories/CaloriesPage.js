@@ -10,10 +10,23 @@ const CaloriesPage = () => {
     const [calories, setCalories] = useState('');
     const [intakeDate, setIntakeDate] = useState('');
     const [message, setMessage] = useState('');
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleAddCalories = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
+
+        setLoading(true);
+
+        // Check if the user is logged in
+        if (!token) {
+            setMessage("User is not logged in");
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 1500);
+            setLoading(false); // Stop loading if user is not logged in
+            return;
+        }
 
         try {
             const response = await axios.post(
@@ -33,9 +46,49 @@ const CaloriesPage = () => {
 
             console.log(`Logged ${calories} calories for ${mealType}`, response.data);
             setMessage('Calories logged successfully');
+
+            // Clear the form fields after successful logging
+            setMealType('');
+            setFoodItem('');
+            setIntakeDate('');
+            setCalories('');
         } catch (err) {
             console.error('Error logging calories:', err);
-            setMessage('Failed to log calories. Please try again.');
+
+            if (err.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                switch (err.response.status) {
+                    case 400:
+                        setMessage('Bad Request: Please check the data you entered.');
+                        break;
+                    case 401:
+                        setMessage('Unauthorized: Please log in again.');
+                        setTimeout(() => {
+                            window.location.href = "/login";
+                        }, 1500);
+                        break;
+                    case 403:
+                        setMessage('Forbidden: You do not have permission to perform this action.');
+                        break;
+                    case 404:
+                        setMessage('Not Found: The server could not find the requested resource.');
+                        break;
+                    case 500:
+                        setMessage('Server Error: Something went wrong on our end. Please try again later.');
+                        break;
+                    default:
+                        setMessage(`Error: ${err.response.statusText}. Please try again.`);
+                }
+            } else if (err.request) {
+                // The request was made but no response was received
+                setMessage('No response from server. Please check your internet connection or try again later.');
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                setMessage('An unexpected error occurred. Please try again.');
+            }
+        } finally {
+            setLoading(false); // Stop loading once request is finished
         }
     };
 
@@ -65,6 +118,7 @@ const CaloriesPage = () => {
                         value={intakeDate}
                         onChange={(e) => setIntakeDate(e.target.value)}
                         required
+                        max={new Date().toISOString().split("T")[0]} // Setting max to today's date
                     />
                 </div>
                 <div className="input-container">
@@ -106,15 +160,16 @@ const CaloriesPage = () => {
                         value={calories}
                         onChange={(e) => setCalories(e.target.value)}
                         required
+                        min="0"
                     />
                 </div>
 
-                <button type="submit" className="log-btn">Add Calories</button>
+                <button type="submit" className="log-btn" disabled={loading}>
+                    {loading ? "Adding..." : "Add Calories"}
+                </button>
             </form>
         </div>
     );
 };
 
 export default CaloriesPage;
-
-
