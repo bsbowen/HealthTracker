@@ -3,7 +3,6 @@ import React from 'react';
 const CaloriesWidget = ({ data }) => {
     return (
         <div className="widget-container">
-            <h2>Total Calories</h2>
             {data.length === 0 ? (
                 <p>No calorie data available.</p>
             ) : (
@@ -20,3 +19,4 @@ const CaloriesWidget = ({ data }) => {
 };
 
 export default CaloriesWidget;
+

@@ -3,7 +3,6 @@ import React from 'react';
 const ExerciseWidget = ({ data }) => {
     return (
         <div className="widget-container">
-            <h2>Total Exercise Duration</h2>
             {data.length === 0 ? (
                 <p>No exercise data available.</p>
             ) : (
@@ -20,3 +19,4 @@ const ExerciseWidget = ({ data }) => {
 };
 
 export default ExerciseWidget;
+

@@ -3,7 +3,6 @@ import React from 'react';
 const SleepWidget = ({ data }) => {
     return (
         <div className="widget-container">
-            <h2>Total Sleep Duration</h2>
             {data.length === 0 ? (
                 <p>No sleep data available.</p>
             ) : (
@@ -20,3 +19,4 @@ const SleepWidget = ({ data }) => {
 };
 
 export default SleepWidget;
+

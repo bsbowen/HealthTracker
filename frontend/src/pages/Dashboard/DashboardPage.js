@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import CaloriesWidget from "../../components/Widgets/CaloriesWidget";
 import ExerciseWidget from "../../components/Widgets/ExerciseWidget";
 import SleepWidget from "../../components/Widgets/SleepWidget";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const DashboardPage = () => {
     const [calorieData, setCalorieData] = useState([]);
@@ -35,17 +36,21 @@ const DashboardPage = () => {
     return (
         <div className="dashboard-container">
             <Navbar />
-                <div className="card">
-                    <CaloriesWidget data={calorieData} />
-                </div>
-                <div className="card">
-                    <ExerciseWidget data={exerciseData} />
-                </div>
-                <div className="card">
-                    <SleepWidget data={sleepData} />
-                </div>
-         </div>
+            <div className="card">
+                <h2><i className="fas fa-apple-alt icon"></i> Total Calories</h2>
+                <CaloriesWidget data={calorieData} />
+            </div>
+            <div className="card">
+                <h2><i className="fas fa-running icon"></i> Total Exercise Duration</h2>
+                <ExerciseWidget data={exerciseData} />
+            </div>
+            <div className="card">
+                <h2><i className="fas fa-heartbeat icon"></i> Total Sleep Duration</h2>
+                <SleepWidget data={sleepData} />
+            </div>
+        </div>
     );
 };
 
 export default DashboardPage;
+

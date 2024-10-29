@@ -1,31 +1,89 @@
-/* DashboardPage.css */
+/* src/Pages/DashboardPage.css */
 
-/* Main container for the dashboard, centered vertically and horizontally */
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap');
 
 .dashboard-container {
-        display: flex;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #e0f7f9;
+    gap: 20px;
+}
 
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: 60px; /* Add padding to avoid cutting off at the top */
-        background-color: #e6f7f9;
-        padding-bottom: 60px; 
-    }
-
-
-/* Card styling (for individual widgets) */
 .card {
-    width: 40%;
+    width: 100%;
+    max-width: 600px;
     background-color: #ffffff;
     border-radius: 15px;
-    padding: 50px;
-    text-align: left;
-    margin: 50px;
-    box-shadow: 10px 10px 20px 20px  rgba(0, 0, 0, 0.1);
-
+    padding: 20px;
+    margin-bottom: 20px; /* Adds spacing between each card */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
+
+/* Style for card titles to match the blue color */
+.card h2 {
+    color: #4ab9b9;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Left-align the entries within each widget container */
+.widget-container ul {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0;
+    text-align: left; /* Ensures text is left-aligned */
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr; /* Option for a single column layout */
+    gap: 10px; /* Space between items */
+}
+
+.widget-container li {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px; /* Adds spacing between list items */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
+    display: flex;
+    align-items: center; /* Centers text and icon vertically */
+}
+
+/* Custom bullet point styling */
+.widget-container li::before {
+    content: '•';
+    color: #4ab9b9;
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+/* Hover effect for list items */
+.widget-container li:hover {
+    background-color: #e6f7f9;
+    transition: background-color 0.3s ease;
+}
+
+/* Icon styling for section titles */
+.icon {
+    font-size: 1.8rem;
+    color: #4ab9b9;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+
+
+
+
 
 
 
