@@ -8,6 +8,7 @@ services:
       - ./backend:/app
     environment:
       - NODE_ENV=development
+      - MONGO_URI=mongodb+srv://Jo:kvc9jbXlIcp0TRIi@healthtrack01.gyjms.mongodb.net/healthtracker?retryWrites=true&w=majority
 
   frontend:
     build: ./frontend
