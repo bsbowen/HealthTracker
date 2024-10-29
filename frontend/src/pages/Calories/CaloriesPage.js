@@ -1,30 +1,89 @@
-// src/pages/CaloriesPage.js
 import React, { useState } from 'react';
-import './CaloriesPage.css'; // Import your CSS for the page
+import axios from 'axios';
+import './CaloriesPage.css';
 import Navbar from "../../components/Navbar/Navbar";
 
 const CaloriesPage = () => {
-    const [date, setDate] = useState('');
+    const [mealType, setMealType] = useState('');
+    const [foodItem, setFoodItem] = useState(''); // New input state for food item
     const [calories, setCalories] = useState('');
+    const [intakeDate, setIntakeDate] = useState(''); // New input state for intake date
+    const [message, setMessage] = useState('');
 
-    const handleAddCalories = (e) => {
+    const handleAddCalories = async (e) => {
         e.preventDefault();
-        console.log(`Logged ${calories} calories on ${date}`);
+        const token = localStorage.getItem("token");
+
+        // Log the values to verify data before making the request
+        console.log({ mealType, foodItem, intakeDate, calories });
+
+        try {
+            const response = await axios.post(
+                '/api/calories',
+                {
+                    meal_type: mealType,
+                    food_item: foodItem, // Add the food item
+                    intake_date: intakeDate, // Add the intake date
+                    calories: calories,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
+            );
+
+            console.log(`Logged ${calories} calories for ${mealType}`, response.data);
+            setMessage('Calories logged successfully');
+        } catch (err) {
+            console.error('Error logging calories:', err);
+            setMessage('Failed to log calories. Please try again.');
+        }
     };
 
     return (
         <div className="calories-container">
-        <Navbar />
+            <Navbar />
             <h2 className="title">Log Calories</h2>
+            {message && <p>{message}</p>}
             <form onSubmit={handleAddCalories} className="calories-form">
                 <div className="input-container">
-                    <label htmlFor="date">Date:</label>
+                    <label htmlFor="intakeDate">Date:</label>
                     <input
                         type="date"
-                        id="date"
+                        id="intakeDate"
                         className="input-field"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
+                        value={intakeDate}
+                        onChange={(e) => setIntakeDate(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="input-container">
+                    <label htmlFor="mealType">Meal Type:</label>
+                    <select
+                        id="mealType"
+                        className="input-field"
+                        value={mealType}
+                        onChange={(e) => setMealType(e.target.value)}
+                        required
+                    >
+                        <option value="">Select Meal Type</option>
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Lunch">Lunch</option>
+                        <option value="Dinner">Dinner</option>
+                        <option value="Snack">Snack</option>
+                    </select>
+                </div>
+
+                <div className="input-container">
+                    <label htmlFor="foodItem">Food Item:</label>
+                    <input
+                        type="text"
+                        id="foodItem"
+                        className="input-field"
+                        value={foodItem}
+                        onChange={(e) => setFoodItem(e.target.value)}
+                        required
                     />
                 </div>
 
@@ -36,6 +95,7 @@ const CaloriesPage = () => {
                         className="input-field"
                         value={calories}
                         onChange={(e) => setCalories(e.target.value)}
+                        required
                     />
                 </div>
 
@@ -46,7 +106,3 @@ const CaloriesPage = () => {
 };
 
 export default CaloriesPage;
-
-
-
-

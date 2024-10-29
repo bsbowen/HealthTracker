@@ -13,19 +13,19 @@ const DashboardPage = () => {
     const [sleepData, setSleepData] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/calories/user/:userId", {
+        axios.get("/api/calories/user", {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }).then((response) => {
             setCalorieData(response.data);
         }).catch((error) => console.error("Error fetching calorie data:", error));
 
-        axios.get("/api/exercise/user/:userId", {
+        axios.get("/api/exercise/user", {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }).then((response) => {
             setExerciseData(response.data);
         }).catch((error) => console.error("Error fetching exercise data:", error));
 
-        axios.get("/api/sleep/user/:userId", {
+        axios.get("/api/sleep/user", {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }).then((response) => {
             setSleepData(response.data);

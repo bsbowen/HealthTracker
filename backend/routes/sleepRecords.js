@@ -2,22 +2,26 @@ const express = require('express');
 const router = express.Router();
 const SleepRecord = require('../models/SleepRecord');
 
+const authenticateToken = require('../middleware/auth');
+
 // Create a new sleep record (POST)
-router.post('/', async (req, res) => {
-  const { userId, sleep_date, sleep_duration, sleep_quality } = req.body;
+router.post('/', authenticateToken, async (req, res) => {
+  const { sleep_date, sleep_duration, sleep_quality } = req.body;
   try {
     const newSleepRecord = new SleepRecord({
-      userId,
+      userId: req.user.userId, // Attach userId from the token
       sleep_date,
       sleep_duration,
       sleep_quality,
     });
     const savedSleepRecord = await newSleepRecord.save();
-    res.json(savedSleepRecord);
+    res.status(201).json(savedSleepRecord);
   } catch (err) {
+    console.error('Error creating sleep record:', err);
     res.status(500).json({ error: 'Failed to create sleep record' });
   }
 });
+
 
 // Get all sleep records (GET)
 router.get('/', async (req, res) => {

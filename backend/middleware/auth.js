@@ -10,13 +10,14 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ message: 'Token not provided' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
     if (err) {
       console.error('Token verification error:', err);
       return res.status(403).json({ message: 'Token is invalid or expired' });
     }
 
-    req.user = user; // Attach user info (from the token) to the request object
+    req.user = { userId: decodedToken.userId }; // Attach userId to req.user
+    console.log('Authenticated user:', req.user);
     next();
   });
 };
