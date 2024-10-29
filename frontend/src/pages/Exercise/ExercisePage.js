@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import Axios for HTTP requests
+import axios from 'axios';
 import './ExercisePage.css';
 import Navbar from "../../components/Navbar/Navbar";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ExercisePage = () => {
-    const [date, setDate] = useState('');
-    const [exerciseType, setExerciseType] = useState(''); // Add input state for exercise type
-    const [exerciseDuration, setExerciseDuration] = useState('');
-    const [caloriesBurned, setCaloriesBurned] = useState(''); // Add input state for optional calories burned
+    const [exerciseType, setExerciseType] = useState('');
+    const [duration, setDuration] = useState('');
+    const [exerciseDate, setExerciseDate] = useState('');
     const [message, setMessage] = useState('');
 
     const handleAddExercise = async (e) => {
@@ -18,10 +18,9 @@ const ExercisePage = () => {
             const response = await axios.post(
                 '/api/exercise',
                 {
-                    exercise_date: date,
                     exercise_type: exerciseType,
-                    duration: exerciseDuration,
-                    calories_burned: caloriesBurned,
+                    duration: duration,
+                    exercise_date: exerciseDate,
                 },
                 {
                     headers: {
@@ -30,7 +29,7 @@ const ExercisePage = () => {
                 }
             );
 
-            console.log(`Logged ${exerciseDuration} minutes of ${exerciseType} on ${date}`, response.data);
+            console.log(`Logged ${duration} minutes for ${exerciseType}`, response.data);
             setMessage('Exercise logged successfully');
         } catch (err) {
             console.error('Error logging exercise:', err);
@@ -39,23 +38,24 @@ const ExercisePage = () => {
     };
 
     return (
-        <div className="tracker-container">
+        <div className="exercise-container">
             <Navbar />
-            <h2 className="title">Log Exercise</h2>
+            <h2 className="title">
+                <i className="fas fa-running icon"></i> Log Exercise
+            </h2>
             {message && <p>{message}</p>}
-            <form onSubmit={handleAddExercise} className="tracker-form">
+            <form onSubmit={handleAddExercise} className="exercise-form">
                 <div className="input-container">
-                    <label htmlFor="date">Date:</label>
+                    <label htmlFor="exerciseDate">Date:</label>
                     <input
                         type="date"
-                        id="date"
+                        id="exerciseDate"
                         className="input-field"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
+                        value={exerciseDate}
+                        onChange={(e) => setExerciseDate(e.target.value)}
                         required
                     />
                 </div>
-
                 <div className="input-container">
                     <label htmlFor="exerciseType">Exercise Type:</label>
                     <input
@@ -67,30 +67,17 @@ const ExercisePage = () => {
                         required
                     />
                 </div>
-
                 <div className="input-container">
-                    <label htmlFor="exerciseDuration">Duration (minutes):</label>
+                    <label htmlFor="duration">Duration (minutes):</label>
                     <input
                         type="number"
-                        id="exerciseDuration"
+                        id="duration"
                         className="input-field"
-                        value={exerciseDuration}
-                        onChange={(e) => setExerciseDuration(e.target.value)}
+                        value={duration}
+                        onChange={(e) => setDuration(e.target.value)}
                         required
                     />
                 </div>
-
-                <div className="input-container">
-                    <label htmlFor="caloriesBurned">Calories Burned (optional):</label>
-                    <input
-                        type="number"
-                        id="caloriesBurned"
-                        className="input-field"
-                        value={caloriesBurned}
-                        onChange={(e) => setCaloriesBurned(e.target.value)}
-                    />
-                </div>
-
                 <button type="submit" className="log-btn">Add Exercise</button>
             </form>
         </div>
@@ -98,3 +85,4 @@ const ExercisePage = () => {
 };
 
 export default ExercisePage;
+

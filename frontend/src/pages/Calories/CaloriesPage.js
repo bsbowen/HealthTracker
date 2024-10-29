@@ -2,28 +2,26 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './CaloriesPage.css';
 import Navbar from "../../components/Navbar/Navbar";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const CaloriesPage = () => {
     const [mealType, setMealType] = useState('');
-    const [foodItem, setFoodItem] = useState(''); // New input state for food item
+    const [foodItem, setFoodItem] = useState('');
     const [calories, setCalories] = useState('');
-    const [intakeDate, setIntakeDate] = useState(''); // New input state for intake date
+    const [intakeDate, setIntakeDate] = useState('');
     const [message, setMessage] = useState('');
 
     const handleAddCalories = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token");
 
-        // Log the values to verify data before making the request
-        console.log({ mealType, foodItem, intakeDate, calories });
-
         try {
             const response = await axios.post(
                 '/api/calories',
                 {
                     meal_type: mealType,
-                    food_item: foodItem, // Add the food item
-                    intake_date: intakeDate, // Add the intake date
+                    food_item: foodItem,
+                    intake_date: intakeDate,
                     calories: calories,
                 },
                 {
@@ -44,7 +42,9 @@ const CaloriesPage = () => {
     return (
         <div className="calories-container">
             <Navbar />
-            <h2 className="title">Log Calories</h2>
+            <h2 className="title">
+                <i className="fas fa-apple-alt icon"></i> Log Calories
+            </h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleAddCalories} className="calories-form">
                 <div className="input-container">
@@ -106,3 +106,5 @@ const CaloriesPage = () => {
 };
 
 export default CaloriesPage;
+
+

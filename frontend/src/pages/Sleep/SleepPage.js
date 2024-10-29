@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; // Import Axios for HTTP requests
 import './SleepPage.css'; // Import your CSS for the page
 import Navbar from "../../components/Navbar/Navbar";
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 
 const SleepPage = () => {
     const [date, setDate] = useState('');
@@ -42,7 +43,9 @@ const SleepPage = () => {
     return (
         <div className="sleep-container">
             <Navbar />
-            <h2 className="title">Log Sleep</h2>
+            <h2 className="title">
+                <i className="fas fa-heartbeat icon"></i> Log Sleep
+            </h2>
             {message && <p>{message}</p>}
             <form onSubmit={handleAddSleep} className="sleep-form">
                 <div className="input-container">
@@ -76,3 +79,4 @@ const SleepPage = () => {
 };
 
 export default SleepPage;
+

@@ -1,20 +1,30 @@
-/* src/Pages/ExercisePage.css */
-.tracker-container {
+/* src/pages/ExercisePage.css */
+
+.exercise-container {
     align-items: center;
-    margin: 100px  auto 0 auto;
+    margin: 100px auto 0 auto;
     padding: 20px;
     max-width: 400px;
     background-color: #ffffff;
     border-radius: 25px;
     box-sizing: border-box;
-    box-shadow: 10px 10px 20px 20px  rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 10px 20px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.5rem;
     color: #4ab9b9;
     margin-bottom: 20px;
+    gap: 8px; /* Space between icon and text */
+}
+
+.icon {
+    font-size: 1.5rem; /* Adjust size as needed */
+    color: #4ab9b9;
 }
 
 .input-container {
@@ -30,7 +40,7 @@
 }
 
 .input-field {
-    width: 97%;
+    max-width: 97%;
     padding: 12px;
     border-radius: 25px;
     border: none;
