@@ -33,9 +33,8 @@ const DashboardPage = () => {
     }, []);
 
     return (
-        <div className="dashboard-page-container">
+        <div className="dashboard-container">
             <Navbar />
-            <div className="dashboard-container">
                 <div className="card">
                     <CaloriesWidget data={calorieData} />
                 </div>
@@ -45,8 +44,7 @@ const DashboardPage = () => {
                 <div className="card">
                     <SleepWidget data={sleepData} />
                 </div>
-            </div>
-        </div>
+         </div>
     );
 };
 
