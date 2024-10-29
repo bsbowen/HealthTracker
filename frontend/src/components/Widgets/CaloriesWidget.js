@@ -9,7 +9,9 @@ const CaloriesWidget = ({ data }) => {
             ) : (
                 <ul>
                     {data.map((entry, index) => (
-                        <li key={index}>{entry.amount} calories on {entry.date}</li>
+                        <li key={index}>
+                            {entry.calories} calories from {entry.food_item} on {new Date(entry.intake_date).toLocaleDateString()}
+                        </li>
                     ))}
                 </ul>
             )}

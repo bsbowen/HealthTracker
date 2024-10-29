@@ -34,14 +34,16 @@ router.get('/', async (req, res) => {
 });
 
 // Get all sleep records for a specific user (GET by userId)
-router.get('/user/:userId', async (req, res) => {
+router.get('/user', authenticateToken, async (req, res) => {
   try {
-    const records = await SleepRecord.find({ userId: req.params.userId }); // Fetch by userId
+    const records = await SleepRecord.find({ userId: req.user.userId }); // Fetch records by authenticated userId
     res.json(records);
   } catch (err) {
+    console.error('Error fetching user sleep records:', err);
     res.status(500).json({ error: 'Failed to fetch user sleep records' });
   }
 });
+
 
 // Get a single sleep record by ID (GET by id)
 router.get('/:id', async (req, res) => {
