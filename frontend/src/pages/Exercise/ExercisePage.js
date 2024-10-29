@@ -9,6 +9,7 @@ const ExercisePage = () => {
     const [duration, setDuration] = useState('');
     const [exerciseDate, setExerciseDate] = useState('');
     const [message, setMessage] = useState('');
+    const [caloriesBurned, setCaloriesBurned] = useState('');
 
     const handleAddExercise = async (e) => {
         e.preventDefault();
@@ -21,6 +22,7 @@ const ExercisePage = () => {
                     exercise_type: exerciseType,
                     duration: duration,
                     exercise_date: exerciseDate,
+                    calories_burned: caloriesBurned,
                 },
                 {
                     headers: {
@@ -36,6 +38,16 @@ const ExercisePage = () => {
             setMessage('Failed to log exercise. Please try again.');
         }
     };
+    const handleLookupClick = () => {
+        if (exerciseType && duration) {
+          // This opens ChatGPT with a prompt about the exercise type and duration entered by the user
+          const lookupURL = `https://www.google.com/search?q=calories+burned+for+${encodeURIComponent(exerciseType)}+for+${duration}+minutes`;
+          window.open(lookupURL, '_blank');
+        } else {
+          alert('Please enter both exercise type and duration first.');
+        }
+      };
+
 
     return (
         <div className="exercise-container">
@@ -75,6 +87,18 @@ const ExercisePage = () => {
                         className="input-field"
                         value={duration}
                         onChange={(e) => setDuration(e.target.value)}
+                        required
+                    />
+                     <button type="button" className="lookup-btn" onClick={handleLookupClick} >Look Up Calories Burned</button>
+                </div>
+                <div className="input-container">
+                    <label htmlFor="caloriesBurned">Calories Burned:</label>
+                    <input
+                        type="number"
+                        id="caloriesBurned"
+                        className="input-field"
+                        value={caloriesBurned}
+                        onChange={(e) => setCaloriesBurned(e.target.value)}
                         required
                     />
                 </div>

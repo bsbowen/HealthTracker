@@ -63,3 +63,15 @@
 .log-btn:hover {
     background-color: #4ab9b9;
 }
+
+/* Style for the exercise lookup button */
+.lookup-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #4bcfcf, #72dfdf);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

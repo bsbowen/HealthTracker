@@ -41,7 +41,7 @@ const CaloriesPage = () => {
 
     const handleNutritionLookup = () => {
         if (foodItem) {
-            const lookupURL = `https://www.google.com/search?q=nutrition+information+for+${encodeURIComponent(foodItem)}`;
+            const lookupURL = `https://www.google.com/search?q=average+calorie+information+for+${encodeURIComponent(foodItem)}`;
             window.open(lookupURL, '_blank');
         } else {
             alert('Please enter a food item first.');
@@ -94,7 +94,7 @@ const CaloriesPage = () => {
                         onChange={(e) => setFoodItem(e.target.value)}
                         required
                     />
-                    <button type="button" className="lookup-btn" onClick={handleNutritionLookup}>Look Up Nutrition Info</button>
+                    <button type="button" className="lookup-btn" onClick={handleNutritionLookup}>Look Up Calories</button>
                 </div>
 
                 <div className="input-container">
