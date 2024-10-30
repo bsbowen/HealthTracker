@@ -23,7 +23,7 @@
 /* Left-side recommended intake card */
 .recommended-intake {
     flex: 1;
-    max-width: 300px;
+    max-width: 300px; /* Fixed width for intake chart */
     background-color: #f9f9f9;
     border-radius: 12px;
     padding: 20px;
@@ -34,8 +34,6 @@
     color: #4ab9b9;
     font-size: 1.6rem;
     margin-bottom: 10px;
-    white-space: nowrap; /* Prevents the text from wrapping to a new line */
-    text-align: center; /* Centers the text */
 }
 
 /* Table styling for the recommended intake */
@@ -66,7 +64,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    flex: 3;
+    flex: 3; /* Occupies more space than the intake chart */
 }
 
 /* Card styling */
@@ -76,11 +74,12 @@
     background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Adds spacing between each card */
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* Style for card titles */
 .card h2 {
     color: #4ab9b9;
     font-size: 1.6rem;
@@ -88,101 +87,101 @@
     margin-bottom: 10px;
 }
 
-/* Navbar styling */
-.navbar {
+/* Left-align entries in widgets */
+.widget-container ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.widget-container li {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    color: #333;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
 }
 
-.navbar-item {
-    padding: 3px 5px;
-    font-size: 0.8rem;
-    margin: 1px;
-    flex: 1 1 auto;
-    text-align: center;
+/* Custom bullet point styling */
+.widget-container li::before {
+    content: '•';
+    color: #4ab9b9;
+    font-size: 1.2rem;
+    margin-right: 8px;
 }
 
-/* Navbar adjustments for mobile */
+/* Hover effect for list items */
+.widget-container li:hover {
+    background-color: #e6f7f9;
+    transition: background-color 0.3s ease;
+}
+
+/* Icon styling for section titles */
+.icon {
+    font-size: 1.8rem;
+    color: #4ab9b9;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
-    .navbar-item {
-        padding: 4px 6px;
-        font-size: 0.85rem;
-    }
-
     .dashboard-container {
-        padding: 50px;
+        padding: 50px; /* Reduced padding on smaller screens */
     }
 
     .dashboard-content {
-        flex-direction: column;
+        flex-direction: column; /* Stack content vertically on tablets */
         align-items: center;
     }
 
     .recommended-intake {
-        max-width: 100%;
-        padding: 20px;
+        max-width: 100%; /* Full width on smaller screens */
     }
 
     .widgets-container {
-        width: 100%;
+        width: 100%; /* Full width for widgets container */
     }
 
     .card {
-        max-width: 100%;
-        padding: 15px;
+        max-width: 100%; /* Full width for each card */
+        padding: 15px; /* Adjust padding for smaller screens */
     }
 }
 
-/* Stack navbar items on very small screens */
 @media (max-width: 480px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .navbar-item {
-        width: 100%;
-        padding: 8px;
-    }
-
     .dashboard-container {
         padding: 30px;
-        font-size: 0.9rem;
+        font-size: 0.9rem; /* Slightly smaller font size */
     }
 
     .recommended-intake h2, .card h2 {
-        font-size: 1.4rem;
+        font-size: 1.4rem; /* Smaller header font size */
     }
 
     .intake-table th, .intake-table td {
-        padding: 10px;
+        padding: 10px; /* Reduce padding in table cells */
     }
 
     .widget-container li {
-        padding: 8px;
+        padding: 8px; /* Smaller padding for list items */
         font-size: 0.9rem;
     }
 
+    /* Adjust icon size on mobile */
     .icon {
         font-size: 1.5rem;
     }
-
-    .recommended-intake {
-        padding: 15px;
-    }
-
-    .dashboard-content {
-        gap: 10px;
-    }
 }
-
-
-
-
-
-
-
 
 
 
