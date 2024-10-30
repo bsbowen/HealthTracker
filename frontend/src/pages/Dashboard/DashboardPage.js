@@ -73,15 +73,15 @@ const DashboardPage = () => {
                 {/* Right-side widgets */}
                 <div className="widgets-container">
                     <div className="card">
-                        <h2><i className="fas fa-apple-alt icon"></i> Total Calories</h2>
+                        <h2><i className="fas fa-apple-alt icon"></i> Calorie Log</h2>
                         <CaloriesWidget data={calorieData} />
                     </div>
                     <div className="card">
-                        <h2><i className="fas fa-running icon"></i> Total Exercise Duration</h2>
+                        <h2><i className="fas fa-running icon"></i> Exercise Duration</h2>
                         <ExerciseWidget data={exerciseData} />
                     </div>
                     <div className="card">
-                        <h2><i className="fas fa-heartbeat icon"></i> Total Sleep Duration</h2>
+                        <h2><i className="fas fa-heartbeat icon"></i> Sleep Duration</h2>
                         <SleepWidget data={sleepData} />
                     </div>
                 </div>
